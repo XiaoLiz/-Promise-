@@ -5,7 +5,7 @@
  *  用code换取 openid，不要进行异步请求获取openid
  **/
 
-
+import promisify from "wechat-minapp-promise"
 import getcode from '../../servers/getCode'   
 import api from '../../servers/url'
 
@@ -20,7 +20,13 @@ Page({
         code: ''
     },
   
-    onLoad: function (options) {},
+    onLoad: function (options) {
+        const login = promisify(wx.login)
+        login()
+        .then(res => {
+            console.log(res.code, 'login')
+        })
+    },
   
     /**举个栗子**/
     onShow: function () {

@@ -1,4 +1,5 @@
 //app.js
+
 import http from './servers/request'
 const wxrequest = http.$ajax
 
